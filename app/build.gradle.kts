@@ -1,16 +1,20 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    //id("com.android.application")
+    //id("org.jetbrains.kotlin.android")
 }
 
 android {
     namespace = "com.example.blakecornishhomework3task1"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.blakecornishhomework3task1"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -40,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -66,4 +70,30 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.core.ktx)
+    implementation(libs.lifecycle)
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+
+
+    //implementation(libs.bundles.compose)
+    //implementation(libs.bundles.koin)
+
+
+    // Core Koin dependency
+    implementation("io.insert-koin:koin-core:3.5.3")
+    // Koin for Android
+    implementation("io.insert-koin:koin-android:3.5.3")
+    // Koin for Android Compose
+    implementation("io.insert-koin:koin-androidx-compose:3.5.3")
+
+
+    testImplementation(libs.test.junit)
+    androidTestImplementation(libs.test.junitExt)
+    androidTestImplementation(libs.test.espresso)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.test.compose.junit4)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.manifest)
 }
